@@ -58,8 +58,9 @@ public class StockReducer2 extends Reducer<Text, DoubleWritable, Text, Text>{
 		
 		while(it2.hasNext())
 			addDiff = addDiff + it2.next();
-		
-		addDiff = addDiff/(counter - 1);
+		if(counter > 1)
+			addDiff = addDiff/(counter - 1);
+
 		DoubleWritable volatility = new DoubleWritable(Math.sqrt(addDiff));
 		Text dummy = new Text(volatility+""); //+" "+sum+" "+addDiff+" "+counter+" "+c	
 		context.write(dummy, key);

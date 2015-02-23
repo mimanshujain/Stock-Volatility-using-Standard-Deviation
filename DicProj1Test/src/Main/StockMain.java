@@ -60,12 +60,14 @@ public class StockMain {
 	    job3.setJarByClass(StockMain.class);
 	    job3.setMapperClass(StockMapper3.class);
 	    job3.setReducerClass(StockReducer3.class);
+	    job3.setMapOutputKeyClass(DoubleWritable.class);
+	    job3.setMapOutputValueClass(Text.class);
 	    job3.setOutputKeyClass(Text.class);
 	    job3.setOutputValueClass(Text.class);
 	    job3.setNumReduceTasks(1);
 	    FileInputFormat.addInputPath(job3, new Path("Transient_2" + args[1]));
 	    FileSystem.get(conf).delete(new Path(args[1]),true);
-	    FileOutputFormat.setOutputPath(job2, new Path(args[1]));
+	    FileOutputFormat.setOutputPath(job3, new Path(args[1]));
 	    
 	    job.waitForCompletion(true);
 	    

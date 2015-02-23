@@ -22,8 +22,6 @@ public class StockMapper1 extends Mapper<Object, Text, Text, Text> {
 			String dt1 = dateValues[0];
 			String dt2 = dateValues[1];
 			companyKey = companyKey+"-"+dt1 + "-"+dt2;
-
-
 			name.set(companyKey);
 			datePrice.set(dateValues[2] + " " + stockData[6]);
 			context.write(name, datePrice);
