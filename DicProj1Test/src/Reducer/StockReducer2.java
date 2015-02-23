@@ -20,7 +20,7 @@ public class StockReducer2 extends Reducer<Text, DoubleWritable, Text, Text>{
 		ArrayList<Double> diffList = new ArrayList<Double>();
 //		Iterator<DoubleWritable> it = values.iterator();
 		
-		for(DoubleWritable value : values)
+		for(DoubleWritable value : values) 
 		{
 			valueList.add(value.get());
 			sum = sum + value.get();
