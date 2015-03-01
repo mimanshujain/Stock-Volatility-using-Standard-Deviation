@@ -11,12 +11,9 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import Combiner.StockCombiner1;
 import Mapper.StockMapper1;
-import Mapper.StockMapper2;
 import Mapper.StockMapper3;
 import Reducer.StockReducer1;
-import Reducer.StockReducer2;
 import Reducer.StockReducer3;
 
 public class StockMain {
@@ -42,7 +39,7 @@ public class StockMain {
 
 	    FileOutputFormat.setOutputPath(job, new Path("Transient_1" + args[1]));	    
 	    
-	    Job job2 = Job.getInstance(conf, "Stock Voltility Job-3");
+	    Job job2 = Job.getInstance(conf, "Stock Voltility Job-2");
 	    job2.setJarByClass(StockMain.class);
 	    job2.setMapperClass(StockMapper3.class);
 	    job2.setReducerClass(StockReducer3.class);
@@ -54,7 +51,7 @@ public class StockMain {
 	    FileInputFormat.addInputPath(job2, new Path("Transient_1" + args[1]));
 	    FileSystem.get(conf).delete(new Path(args[1]),true);
 	    FileOutputFormat.setOutputPath(job2, new Path(args[1]));
-	    
+
 	    job.waitForCompletion(true);
 	    boolean status = job2.waitForCompletion(true);
 	    

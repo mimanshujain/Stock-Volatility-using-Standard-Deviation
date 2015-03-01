@@ -11,6 +11,7 @@ public class StockMapper3 extends Mapper<Object, Text, DoubleWritable, Text>{
 
 	public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 		String[] compVal = value.toString().split("\\s+");
-		context.write(new DoubleWritable(Double.parseDouble(compVal[0])), new Text(compVal[1]));
+		double val = Double.parseDouble(compVal[0]);
+		context.write(new DoubleWritable(val), new Text(compVal[1]));
 	}
 }
